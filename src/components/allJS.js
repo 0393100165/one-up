@@ -44,12 +44,20 @@ import ResultSuccessPage from '../components/CheckoutPaymentPage/ResultSuccessPa
 import DealPage from '../components/DealPage/Deal';
 import ShopPage from '../components/ShopPage/ShopPage';
 import ErrorPhanQuyen from '../components/ErrorPage/ErrorPhanQuyen';
+import Customer_Account from '../components/CustomerPage/Customer_Account';
+import Customer_DonHang from '../components/CustomerPage/Customer_DonHang';
+import Customer_ThongTinThanhToan from '../components/CustomerPage/Customer_ThongTinThanhToan';
+import Customer_DonHang_Detail from '../components/CustomerPage/Customer_DonHang_Detail';
+import Customer_Comment from '../components/CustomerPage/Customer_Comment';
+import Customer_SanPhamDaXem from '../components/CustomerPage/Customer_SanPhamDaXem';
+import Customer from '../components/CustomerPage/Customer';
+import TimKiem from '../components/TimKiemPage/TimKiem';
+import QuillEditor from '../components/DungChung/QuillEditor';
+import BaiViet from '../components/BaiVietPage/BaiViet';
 import ActivationAccount from '../components/ActivationAccountPage/ActivationAccount';
 import ForgetPassword from '../components/ForgetPasswordPage/ForgetPassword';
 import ResetPassword from '../components/ResetPasswordPage/ResetPassword';
-import CheckoutCart from '../components/CheckoutCartPage/CheckoutCartt';
-import CheckoutShipping from '../components/CheckoutShippingPage/CheckoutShipping';
-import CheckoutPayment from '../components/CheckoutPaymentPage/CheckoutPayment';
+
 export {
     TrangChu,
     Header,
@@ -72,12 +80,17 @@ export {
     ClientCommentComponent,
     DangKyComponent,
     DangNhapComponent,
+    UserComponent,
+    QuillEditor,
     QLCategoryComponent,
     QLBrandComponent,
     QLProductComponent,
     QLBaiVietComponent,
     QLMaGiamGiaComponent,
     QLNhanXetComponent,
+    CheckoutCart,
+    CheckoutShipping,
+    CheckoutPayment,
     BanHang,
     BanHang_DangKy,
     BanHang_TrangChuComponent,
@@ -88,14 +101,21 @@ export {
     BanHang_Top10SanPhamBanChayComponent,
     BanHang_BaoCaoBanHangTongHopComponent,
     BanHang_DanhSachGiamGiaComponent,
+    ResultSuccessPage,
     DealPage,
     ShopPage,
     QLDonHangComponent,
     BanHang_DonHangComponent,
+    Customer_Account,
+    Customer,
+    Customer_DonHang,
+    Customer_DonHang_Detail,
+    Customer_ThongTinThanhToan,
+    Customer_Comment,
+    Customer_SanPhamDaXem,
+    TimKiem,
+    BaiViet,
     ActivationAccount,
     ForgetPassword,
-    ResetPassword,
-    CheckoutCart,
-    CheckoutShipping,
-    CheckoutPayment,
+    ResetPassword
 };
