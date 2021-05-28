@@ -47,7 +47,9 @@ import ErrorPhanQuyen from '../components/ErrorPage/ErrorPhanQuyen';
 import ActivationAccount from '../components/ActivationAccountPage/ActivationAccount';
 import ForgetPassword from '../components/ForgetPasswordPage/ForgetPassword';
 import ResetPassword from '../components/ResetPasswordPage/ResetPassword';
-
+import CheckoutCart from '../components/CheckoutCartPage/CheckoutCartt';
+import CheckoutShipping from '../components/CheckoutShippingPage/CheckoutShipping';
+import CheckoutPayment from '../components/CheckoutPaymentPage/CheckoutPayment';
 export {
     TrangChu,
     Header,
@@ -92,5 +94,8 @@ export {
     BanHang_DonHangComponent,
     ActivationAccount,
     ForgetPassword,
-    ResetPassword
+    ResetPassword,
+    CheckoutCart,
+    CheckoutShipping,
+    CheckoutPayment,
 };
