@@ -223,7 +223,7 @@ function Header() {
     return (
         <Fragment>
             <Navbar bg="light" expand="lg">
-                <div style={{ width: '85%', display: 'flex', margin: 'auto' }}>
+                <div style={{borderRadius: '10px', width: '85%', display: 'flex', margin: 'auto' }}>
                     <Navbar.Brand href="/">
                         <img
                             alt=""

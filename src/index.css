@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
 
 code {
@@ -57,6 +58,7 @@ p {
   color: black;
   margin-top: 10px;
   margin: 15px;
+
 }
 
 .nav-font-style {

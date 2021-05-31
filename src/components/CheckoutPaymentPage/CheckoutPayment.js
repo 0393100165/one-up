@@ -247,17 +247,17 @@ export default function CheckoutPayment() {
         }
     }
 
-    // async function ThanhToan_MoMo(dataGioHang) {
-    //     let res = await axios.post('hethong/gw_payment/transactionProcessor', {
-    //         amount: tinhThanhTien(tienTamTinh(dataGioHangNew), dataVoucher, 0).toString(),
-    //         orderInfo: thongTinDonHang.idShow
-    //     });
-    //     if (res.data.status === 'success') {
-    //         window.location.assign(res.data.data);
-    //     } else {
-    //         alert('Thanh toán MoMo thất bại');
-    //     }
-    // }
+    async function ThanhToan_MoMo(dataGioHang) {
+        let res = await axios.post('hethong/gw_payment/transactionProcessor', {
+            amount: tinhThanhTien(tienTamTinh(dataGioHangNew), dataVoucher, 0).toString(),
+            orderInfo: thongTinDonHang.idShow
+        });
+        if (res.data.status === 'success') {
+            window.location.assign(res.data.data);
+        } else {
+            alert('Thanh toán MoMo thất bại');
+        }
+    }
 
     useEffect(() => {
         KiemTraVoucher(idVoucher);
@@ -367,12 +367,13 @@ export default function CheckoutPayment() {
                                         <Radio style={radioStyle} value={1}>
                                             Thanh toán bằng Paypal
                                 </Radio>
-                                        {/* <Radio style={radioStyle} value={2}>
-                                        Thanh toán bằng thẻ ATM nội địa/Internet Banking
-                                </Radio>
                                 <Radio style={radioStyle} value={3}>
                                         Thanh toán bằng MoMo
                                 </Radio>
+                                        {/* <Radio style={radioStyle} value={2}>
+                                        Thanh toán bằng thẻ ATM nội địa/Internet Banking
+                                </Radio>
+   
                                     {
                                         valueRadioThanhToan === 2 && (
                                             <Form {...layout}>
@@ -462,13 +463,13 @@ export default function CheckoutPayment() {
                                     )
                                 }
 
-                                {/* {
+                                {
                                 valueRadioThanhToan === 3 && (
                                     <Button style={{ width: 300 }} variant="danger" size='lg' onClick={() => {
                                         ThanhToan_MoMo()
                                     }}>ĐẶT MUA</Button>
                                 )
-                            } */}
+                                }
 
                                 {
                                     valueRadioThanhToan === 1 && (
@@ -501,14 +502,6 @@ export default function CheckoutPayment() {
                                         </Link>
                                     )
                                 }
-
-                                {/* {
-                                valueRadioThanhToan === 2 && (
-                                    <Button style={{ width: 300 }} variant="danger" size='lg' onClick={() => {
-                                        ThanhToan_ATMnoidia()
-                                    }}>ĐẶT MUA</Button>
-                                )
-                            } */}
 
                                 <br></br>
                                 (Xin vui lòng kiểm tra lại đơn hàng trước khi Đặt mua)
