@@ -257,6 +257,31 @@ export default function CheckoutPayment() {
         } else {
             alert('Thanh toán MoMo thất bại');
         }
+        
+    }
+    async function ThemDonHang(dataGioHang) {
+        let res = await axios.post('hethong/orders-them', {
+            emailNhan: localStorage.getItem('email'),
+            idShow: thongTinDonHang.idShow,
+            thongTinNguoiMua: {
+                hoTen: thongTinDonHang.thongTinNguoiMua.hoTen,
+                sdt: thongTinDonHang.thongTinNguoiMua.sdt,
+                diaChi: thongTinDonHang.thongTinNguoiMua.diaChi
+            },
+            tongTien: thongTinDonHang.tongTien,
+            soLuongSanPham: thongTinDonHang.soLuongSanPham,
+            hinhThucThanhToan: valueRadioThanhToan,
+            ngayTao: thongTinDonHang.ngayTao,
+            idUser: cookies.userID,
+            idVoucher: thongTinDonHang.idVoucher,
+            dataGioHang: dataGioHangNew
+        });
+        if (res.data.status == 'success') {
+            message.success('Đã tạo đơn hàng thành công');
+            history.push('/checkout/payment/success/' + thongTinDonHang.idShow);
+            localStorage.setItem('dataGioHang', '[]');
+            localStorage.setItem('idVoucher', undefined);
+        }
     }
 
     useEffect(() => {
@@ -467,6 +492,7 @@ export default function CheckoutPayment() {
                                 valueRadioThanhToan === 3 && (
                                     <Button style={{ width: 300 }} variant="danger" size='lg' onClick={() => {
                                         ThanhToan_MoMo()
+                                        ThemDonHang()
                                     }}>ĐẶT MUA</Button>
                                 )
                                 }
