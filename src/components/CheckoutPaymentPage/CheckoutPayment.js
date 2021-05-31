@@ -24,14 +24,7 @@ export default function CheckoutPayment() {
         loaiGiamGia: '',
         giaTriGiam: ''
     });
-    // const layout = {
-    //     labelCol: {
-    //         span: 0,
-    //     },
-    //     wrapperCol: {
-    //         span: 12,
-    //     },
-    // };
+
     const [idVoucher, setIdVoucher] = useState(localStorage.getItem('idVoucher'));
     const [dataGioHang, setDataGioHang] = useState(JSON.parse(localStorage.getItem('dataGioHang')));
     const steps = [
@@ -175,22 +168,6 @@ export default function CheckoutPayment() {
 
     }
 
-    // function ThanhToan_ATMnoidia() {
-    //     let res = axios.post('hethong/vnpay-them', {
-    //         amount: tinhThanhTien(tienTamTinh(dataGioHangNew), dataVoucher, 0),
-    //         bankCode: valueNganHang,
-    //         orderDescription: 'Trả tiền mua hàng cho OneUp',
-    //         orderType: 'billpayment',
-    //         language: 'vn'
-    //     })
-
-    //     if(res.data.status === 'success'){
-    //         alert('VNPAY ok');
-    //     }else{
-    //         alert('Thanh toán thất bại');
-    //     }
-    // }
-
     async function TaoDonHang_ThanhToan_COD(dataGioHang) {
         let res = await axios.post('hethong/orders-them', {
             emailNhan: localStorage.getItem('email'),
@@ -254,34 +231,11 @@ export default function CheckoutPayment() {
         });
         if (res.data.status === 'success') {
             window.location.assign(res.data.data);
+            
         } else {
             alert('Thanh toán MoMo thất bại');
         }
-        
-    }
-    async function ThemDonHang(dataGioHang) {
-        let res = await axios.post('hethong/orders-them', {
-            emailNhan: localStorage.getItem('email'),
-            idShow: thongTinDonHang.idShow,
-            thongTinNguoiMua: {
-                hoTen: thongTinDonHang.thongTinNguoiMua.hoTen,
-                sdt: thongTinDonHang.thongTinNguoiMua.sdt,
-                diaChi: thongTinDonHang.thongTinNguoiMua.diaChi
-            },
-            tongTien: thongTinDonHang.tongTien,
-            soLuongSanPham: thongTinDonHang.soLuongSanPham,
-            hinhThucThanhToan: valueRadioThanhToan,
-            ngayTao: thongTinDonHang.ngayTao,
-            idUser: cookies.userID,
-            idVoucher: thongTinDonHang.idVoucher,
-            dataGioHang: dataGioHangNew
-        });
-        if (res.data.status == 'success') {
-            message.success('Đã tạo đơn hàng thành công');
-            history.push('/checkout/payment/success/' + thongTinDonHang.idShow);
-            localStorage.setItem('dataGioHang', '[]');
-            localStorage.setItem('idVoucher', undefined);
-        }
+
     }
 
     useEffect(() => {
@@ -370,12 +324,7 @@ export default function CheckoutPayment() {
                                         <Radio style={radioStyle} value={0}>
                                             Giao hàng tiêu chuẩn
                                 </Radio>
-                                        {/* <Radio style={radioStyle} value={1} disabled>
-                                        Giao hàng bằng GoViet
-                                </Radio>
-                                    <Radio style={radioStyle} value={2} disabled>
-                                        Giao hàng bằng Grab
-                                </Radio> */}
+
                                     </Radio.Group>
                                 </div>
                             </div>
@@ -392,45 +341,9 @@ export default function CheckoutPayment() {
                                         <Radio style={radioStyle} value={1}>
                                             Thanh toán bằng Paypal
                                 </Radio>
-                                <Radio style={radioStyle} value={3}>
+                                <Radio style={radioStyle} value={2}>
                                         Thanh toán bằng MoMo
                                 </Radio>
-                                        {/* <Radio style={radioStyle} value={2}>
-                                        Thanh toán bằng thẻ ATM nội địa/Internet Banking
-                                </Radio>
-   
-                                    {
-                                        valueRadioThanhToan === 2 && (
-                                            <Form {...layout}>
-                                                <Form.Item label="Chọn ngân hàng: ">
-                                                    <Select style={{ width: 300 }} onChange={(value) => {
-                                                        setValueNganHang(value);
-                                                    }}>
-                                                        <Option value=''>Không chọn</Option>
-                                                        <Option value='NCB'>Ngân hàng NCB</Option>
-                                                        <Option value='SCB'>Ngân hàng SCB</Option>
-                                                        <Option value='SACOMBANK'>Ngân hàng SACOMBANK</Option>
-                                                        <Option value='EXIMBANK'>Ngân hàng EXIMBANK</Option>
-                                                        <Option value='MSBANK'>Ngân hàng MSBANK</Option>
-                                                        <Option value='NAMABANK'>Ngân hàng NAMABANK</Option>
-                                                        <Option value='VIETTINBANK'>Ngân hàng VIETTINBANK</Option>
-                                                        <Option value='VIETCOMBANK'>Ngân hàng VIETCOMBANK</Option>
-                                                        <Option value='HDBANK'>Ngân hàng HDBANK</Option>
-                                                        <Option value='DONGABANK'>Ngân hàng DONGABANK</Option>
-                                                        <Option value='OCEANBANK'>Ngân hàng OCEANBANK</Option>
-                                                        <Option value='BIDV'>Ngân hàng BIDV</Option>
-                                                        <Option value='TECHCOMBANK'>Ngân hàng TECHCOMBANK</Option>
-                                                        <Option value='VPBANK'>Ngân hàng VPBANK</Option>
-                                                        <Option value='AGRIBANK'>Ngân hàng AGRIBANK</Option>
-                                                        <Option value='MBBANK'>Ngân hàng MBBANK</Option>
-                                                        <Option value='ACB'>Ngân hàng ACB</Option>
-                                                        <Option value='OCB'>Ngân hàng OCB</Option>
-                                                        <Option value='SHB'>Ngân hàng SHB</Option>
-                                                    </Select>
-                                                </Form.Item>
-                                            </Form>
-                                        )
-                                    } */}
                                     </Radio.Group>
                                 </div>
                             </div>
@@ -489,10 +402,9 @@ export default function CheckoutPayment() {
                                 }
 
                                 {
-                                valueRadioThanhToan === 3 && (
+                                valueRadioThanhToan === 2 && (
                                     <Button style={{ width: 300 }} variant="danger" size='lg' onClick={() => {
-                                        ThanhToan_MoMo()
-                                        ThemDonHang()
+                                        ThanhToan_MoMo();
                                     }}>ĐẶT MUA</Button>
                                 )
                                 }
