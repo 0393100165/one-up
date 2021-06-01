@@ -166,6 +166,8 @@ export default function CheckoutPayment() {
             }
         }
 
+        
+
     }
 
     async function TaoDonHang_ThanhToan_COD(dataGioHang) {
@@ -236,6 +238,16 @@ export default function CheckoutPayment() {
             alert('Thanh toán MoMo thất bại');
         }
 
+    }
+
+    async function ConfirmUrl(dataGioHang) {
+            let res = await axios.get('hethong/gw_payment/confirmUrl');
+            if (res.data.status === 'success') {
+            message.success('Đã tạo đơn hàng thành công');
+            history.push('/checkout/payment/success/' + thongTinDonHang.idShow);
+            localStorage.setItem('dataGioHang', '[]');
+            localStorage.setItem('idVoucher', undefined);
+            }
     }
 
     useEffect(() => {
@@ -405,6 +417,7 @@ export default function CheckoutPayment() {
                                 valueRadioThanhToan === 2 && (
                                     <Button style={{ width: 300 }} variant="danger" size='lg' onClick={() => {
                                         ThanhToan_MoMo();
+                                        ConfirmUrl();
                                     }}>ĐẶT MUA</Button>
                                 )
                                 }
