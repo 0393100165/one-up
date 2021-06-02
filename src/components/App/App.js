@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import './App.css';
 import 'react-quill/dist/quill.snow.css';
-import { Header, Footer, DealPage, TrangChu, ActivationAccount, ResetPassword, ForgetPassword, TimKiem, Customer, BanHang_DangKy, ErrorPhanQuyen, ShopPage, CategorySanPham, SanPhamDetail, BaiViet, CheckoutCart, CheckoutShipping, CheckoutPayment, BanHang, ResultSuccessPage } from '../allJS';
+import { Header, Footer, DealPage, TrangChu, ActivationAccount, ResetPassword, ForgetPassword, TimKiem, Customer, BanHang_DangKy, ErrorPhanQuyen, ShopPage, CategorySanPham, SanPhamDetail, BaiViet, CheckoutCart, CheckoutShipping, CheckoutPayment, BanHang, ResultSuccessPage, ResultConfirm } from '../allJS';
 import MainAdmin from '../Admin/MainAdmin';
 import { Switch, Route, Redirect } from "react-router-dom";
 import { useSelector } from 'react-redux';
@@ -24,6 +24,7 @@ function App() {
         <Route path="/shop/:id/:slug" component={ShopPage}></Route>
         <Route path="/deal" component={DealPage}></Route>
         <Route path="/checkout/payment/success/:id" component={ResultSuccessPage}></Route>
+        <Route path="/checkout/payment/confirm/momo" component={ResultConfirm}></Route>
         <Route path="/category/:id/:slug" component={CategorySanPham}></Route>
         <Route path="/admin" component={MainAdmin}></Route>
         <Route path="/detail/:id/:slug" component={SanPhamDetail}></Route>

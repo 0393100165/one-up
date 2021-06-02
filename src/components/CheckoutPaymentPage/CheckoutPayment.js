@@ -9,6 +9,8 @@ import { useCookies } from 'react-cookie';
 import PaypalExpressBtn from 'react-paypal-express-checkout';
 
 export default function CheckoutPayment() {
+    const url = require('url');
+    const querystring = require('querystring');
     const dispatch = useDispatch();
     const history = useHistory();
     const [dataGioHangNew, setDataGioHangNew] = useState([]);
@@ -165,9 +167,6 @@ export default function CheckoutPayment() {
                 });
             }
         }
-
-        
-
     }
 
     async function TaoDonHang_ThanhToan_COD(dataGioHang) {
@@ -233,21 +232,24 @@ export default function CheckoutPayment() {
         });
         if (res.data.status === 'success') {
             window.location.assign(res.data.data);
+            history.push('/checkout/payment/success/' + thongTinDonHang.idShow);
             
         } else {
             alert('Thanh toán MoMo thất bại');
         }
-
+        
     }
 
-    async function ConfirmUrl(dataGioHang) {
-            let res = await axios.get('hethong/gw_payment/confirmUrl');
-            if (res.data.status === 'success') {
-            message.success('Đã tạo đơn hàng thành công');
-            history.push('/checkout/payment/success/' + thongTinDonHang.idShow);
-            localStorage.setItem('dataGioHang', '[]');
-            localStorage.setItem('idVoucher', undefined);
-            }
+    async function ThanhToan_MoMo_1(dataGioHang) {
+        let res = await axios.post('hethong/gw_payment/ConfirmUrl_MoMo')
+        if (res.data.status === 'success') {
+            // window.location.assign(res.data.data);
+            debugger
+            console.log(window.location.search.substr(1));
+
+        } else {
+            alert('Thanh toán MoMo thất bại');
+        }
     }
 
     useEffect(() => {
@@ -415,11 +417,12 @@ export default function CheckoutPayment() {
 
                                 {
                                 valueRadioThanhToan === 2 && (
-                                    <Button style={{ width: 300 }} variant="danger" size='lg' onClick={() => {
-                                        ThanhToan_MoMo();
-                                        ConfirmUrl();
-                                    }}>ĐẶT MUA</Button>
-                                )
+                                    <Button style={{ width: 300 }} variant="danger" size='lg'
+                                            onClick={() => {
+                                                ThanhToan_MoMo();
+                                                
+                                            }}>ĐẶT MUA</Button>
+                                    )
                                 }
 
                                 {

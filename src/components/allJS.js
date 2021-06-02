@@ -41,6 +41,7 @@ import BanHang_TongHopDonHangComponent from '../components/BanHangPage/BanHang_T
 import BanHang_Top10SanPhamBanChayComponent from '../components/BanHangPage/BanHang_Top10SanPhamBanChay';
 import BanHang_BaoCaoBanHangTongHopComponent from '../components/BanHangPage/BanHang_BaoCaoBanHangTongHop';
 import ResultSuccessPage from '../components/CheckoutPaymentPage/ResultSuccessPage';
+import ResultConfirm from '../components/CheckoutPaymentPage/ResultConfirm';
 import DealPage from '../components/DealPage/Deal';
 import ShopPage from '../components/ShopPage/ShopPage';
 import ErrorPhanQuyen from '../components/ErrorPage/ErrorPhanQuyen';
@@ -102,6 +103,7 @@ export {
     BanHang_BaoCaoBanHangTongHopComponent,
     BanHang_DanhSachGiamGiaComponent,
     ResultSuccessPage,
+    ResultConfirm,
     DealPage,
     ShopPage,
     QLDonHangComponent,

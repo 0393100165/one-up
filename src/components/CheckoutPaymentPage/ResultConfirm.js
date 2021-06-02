@@ -5,20 +5,19 @@ import { Result } from 'antd';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
-export default function ResultSuccessPage(props) {
-    const donhangID = props.match.params.id;
+export default function ResultConfirm(props) {
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch({ type: 'CLOSE_HEADER' });
     }, [])
-    
+
     return (
         <div>
             <Result
                 status="success"
-                title="Đã đặt hàng thành công"
-                subTitle={"Mã đơn hàng: " + donhangID + ". Từ bây giờ bạn có thể theo dõi đơn hàng của mình."}
+                title="Đã thanh toán thành công"
+                subTitle={"Đợi để quay lại trang chủ."}
                 extra={[
                     <Link to='/'>
                         <Button>Trở về Trang Chủ</Button>
