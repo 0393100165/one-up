@@ -232,24 +232,10 @@ export default function CheckoutPayment() {
         });
         if (res.data.status === 'success') {
             window.location.assign(res.data.data);
-            history.push('/checkout/payment/success/' + thongTinDonHang.idShow);
-            
         } else {
             alert('Thanh toán MoMo thất bại');
         }
         
-    }
-
-    async function ThanhToan_MoMo_1(dataGioHang) {
-        let res = await axios.post('hethong/gw_payment/ConfirmUrl_MoMo')
-        if (res.data.status === 'success') {
-            // window.location.assign(res.data.data);
-            debugger
-            console.log(window.location.search.substr(1));
-
-        } else {
-            alert('Thanh toán MoMo thất bại');
-        }
     }
 
     useEffect(() => {
@@ -418,9 +404,16 @@ export default function CheckoutPayment() {
                                 {
                                 valueRadioThanhToan === 2 && (
                                     <Button style={{ width: 300 }} variant="danger" size='lg'
+                                            onMouseOver={() => {
+                                                if (idVoucher.length > 0) {
+                                                    setThongTinDonHang({
+                                                        ...thongTinDonHang,
+                                                        idVoucher: idVoucher
+                                                    })
+                                                }
+                                            }}
                                             onClick={() => {
                                                 ThanhToan_MoMo();
-                                                
                                             }}>ĐẶT MUA</Button>
                                     )
                                 }
