@@ -305,14 +305,6 @@ function Header() {
                     </Tab>
                 </Tabs>
             </Modal>
-            {/* <Nav className="flex-column nav-font-style" style={{display: 'flow-root', textAlign: 'center', backgroundColor: '#f8f9fa'}}>
-                        {dataCategory.map((item, i) => {
-                            return <NavLink key={item._id} to={'category/' + item._id + '/' + to_slug(item.ten)} className="navMenu">
-                                <i className={item.icon} style={{ marginRight: 10 }}></i>{item.ten}
-                            </NavLink>
-                        })}
-                    </Nav> */}
-            {/* <MarkettingComponent dataBaiViet={dataBaiViet} dataCategory={dataCategory}></MarkettingComponent> */}
         </Fragment>
     );
 }

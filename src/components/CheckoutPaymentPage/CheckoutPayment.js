@@ -228,14 +228,27 @@ export default function CheckoutPayment() {
     async function ThanhToan_MoMo(dataGioHang) {
         let res = await axios.post('hethong/gw_payment/transactionProcessor', {
             amount: tinhThanhTien(tienTamTinh(dataGioHangNew), dataVoucher, 0).toString(),
-            orderInfo: thongTinDonHang.idShow
+            orderInfo: thongTinDonHang.idShow,
+            emailNhan: localStorage.getItem('email'),
+            idShow: thongTinDonHang.idShow,
+            thongTinNguoiMua: {
+                hoTen: thongTinDonHang.thongTinNguoiMua.hoTen,
+                sdt: thongTinDonHang.thongTinNguoiMua.sdt,
+                diaChi: thongTinDonHang.thongTinNguoiMua.diaChi
+            },
+            tongTien: thongTinDonHang.tongTien,
+            soLuongSanPham: thongTinDonHang.soLuongSanPham,
+            hinhThucThanhToan: valueRadioThanhToan,
+            ngayTao: thongTinDonHang.ngayTao,
+            idUser: cookies.userID,
+            idVoucher: thongTinDonHang.idVoucher,
+            dataGioHang: dataGioHangNew
         });
-        if (res.data.status === 'success') {
+        if (res.data.data === 'success') {
             window.location.assign(res.data.data);
         } else {
             alert('Thanh toán MoMo thất bại');
         }
-        
     }
 
     useEffect(() => {
@@ -413,7 +426,8 @@ export default function CheckoutPayment() {
                                                 }
                                             }}
                                             onClick={() => {
-                                                ThanhToan_MoMo();
+                                                ThanhToan_MoMo(dataGioHang);
+                                      
                                             }}>ĐẶT MUA</Button>
                                     )
                                 }

@@ -16,7 +16,7 @@ export default function ResultConfirm(props) {
         <div>
             <Result
                 status="success"
-                title="Đã thanh toán thành công"
+                title="Thanh toán thành công"
                 subTitle={"Đợi để quay lại trang chủ."}
                 extra={[
                     <Link to='/'>
