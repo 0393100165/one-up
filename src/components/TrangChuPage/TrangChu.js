@@ -80,7 +80,6 @@ function TrangChu() {
         <div>
             <MarkettingComponent dataBaiViet={dataBaiViet} dataCategory={dataCategory}></MarkettingComponent>
             <div className="container">
-                {/* <HotSearchComponent dataSearch={dataSearch}></HotSearchComponent> */}
                 <DealComponent dataProductSale={dataProductSale}></DealComponent>
                 <ForCustomerComponent dataProduct={dataProduct}></ForCustomerComponent>
             </div>
