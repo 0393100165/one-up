@@ -244,7 +244,7 @@ export default function CheckoutPayment() {
             idVoucher: thongTinDonHang.idVoucher,
             dataGioHang: dataGioHangNew
         });
-        if (res.data.data === 'success') {
+        if (res.data.status === 'success') {
             window.location.assign(res.data.data);
         } else {
             alert('Thanh toán MoMo thất bại');
