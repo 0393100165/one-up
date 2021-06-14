@@ -125,6 +125,8 @@ export default function ResultConfirm(props) {
             idVoucher: thongTinDonHang.idVoucher,
             dataGioHang: dataGioHangNew
         });
+        localStorage.setItem('dataGioHang', '[]');
+        localStorage.setItem('idVoucher', undefined);
     }
       useEffect(() => {
         KiemTraVoucher(idVoucher);
