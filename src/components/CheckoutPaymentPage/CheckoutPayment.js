@@ -397,7 +397,6 @@ export default function CheckoutPayment() {
                             <div className='col' style={{ marginTop: 20 }}>
                                 {
                                     valueRadioThanhToan === 0 && (
-                                        // <Link to={'payment/success/' + thongTinDonHang.idShow} onClick={(e) => {
 
                                         <Button style={{ width: 300 }} variant="danger" size='lg'
                                             onMouseOver={() => {
@@ -435,7 +434,6 @@ export default function CheckoutPayment() {
                                 {
                                     valueRadioThanhToan === 1 && (
                                         <Link to={'payment/success/' + thongTinDonHang.idShow} onClick={(e) => {
-                                            //TaoDonHang(e, dataGioHang);
                                             e.preventDefault();
                                         }}
                                             onMouseOver={() => {
