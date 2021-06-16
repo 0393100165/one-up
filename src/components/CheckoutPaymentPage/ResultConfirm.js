@@ -76,6 +76,7 @@ export default function ResultConfirm(props) {
         }
 
         setDataGioHangNew(arrayGioHangNew);
+
     }
 
     function tienTamTinh(data) {
@@ -108,25 +109,28 @@ export default function ResultConfirm(props) {
         }
     }
 
-    async function TaoDonHang_ThanhToan_MoMo(dataGioHang) {
-        let res = await axios.post('hethong/orders-them', {
-            emailNhan: localStorage.getItem('email'),
-            idShow: thongTinDonHang.idShow,
-            thongTinNguoiMua: {
-                hoTen: thongTinDonHang.thongTinNguoiMua.hoTen,
-                sdt: thongTinDonHang.thongTinNguoiMua.sdt,
-                diaChi: thongTinDonHang.thongTinNguoiMua.diaChi
-            },
-            tongTien: thongTinDonHang.tongTien,
-            soLuongSanPham: thongTinDonHang.soLuongSanPham,
-            hinhThucThanhToan: 2,
-            ngayTao: thongTinDonHang.ngayTao,
-            idUser: cookies.userID,
-            idVoucher: thongTinDonHang.idVoucher,
-            dataGioHang: dataGioHangNew
-        });
-        localStorage.setItem('dataGioHang', '[]');
-        localStorage.setItem('idVoucher', undefined);
+    async function TaoDonHang_ThanhToan_MoMo() {
+        
+        if( total != 0 && dataGioHang != '' &&  orderId != '' && dataGioHangNew != '') {
+            let res = await axios.post('hethong/orders-them', {
+                emailNhan: localStorage.getItem('email'),
+                idShow: thongTinDonHang.idShow,
+                thongTinNguoiMua: {
+                    hoTen: thongTinDonHang.thongTinNguoiMua.hoTen,
+                    sdt: thongTinDonHang.thongTinNguoiMua.sdt,
+                    diaChi: thongTinDonHang.thongTinNguoiMua.diaChi
+                },
+                tongTien: thongTinDonHang.tongTien,
+                soLuongSanPham: thongTinDonHang.soLuongSanPham,
+                hinhThucThanhToan: 2,
+                ngayTao: thongTinDonHang.ngayTao,
+                idUser: cookies.userID,
+                idVoucher: thongTinDonHang.idVoucher,
+                dataGioHang: dataGioHangNew
+            });
+                localStorage.setItem('dataGioHang', '[]');
+                localStorage.setItem('idVoucher', undefined);
+        }
     }
       useEffect(() => {
         KiemTraVoucher(idVoucher);
@@ -146,25 +150,23 @@ export default function ResultConfirm(props) {
             tongTien: tinhThanhTien(tienTamTinh(dataGioHangNew), dataVoucher, 0),
             soLuongSanPham: tinhTongSanPhamTrongGioHang(dataGioHang),
             ngayTao: new Date()
-        })
+        });
         setTotal(parseInt(tinhThanhTien(tienTamTinh(dataGioHangNew), dataVoucher, 0) / 23300));
-        
-    }, [dataGioHangNew],  TaoDonHang_ThanhToan_MoMo())
-
+    }, [dataGioHangNew], TaoDonHang_ThanhToan_MoMo())
 
     return (
-        <div>
-            <Result
+        <div >
+            <Result 
                 status="success"
                 title="Thanh toán thành công"
-                subTitle={"Từ bây giờ bạn có xem đơn hàng của bạn."}
+                subTitle={"Từ bây giờ bạn có xem đơn hàng của bạn." }
                 extra={[
-                    <Link to='/'>
+                    <Link to='/' >
                         <Button> Trở về Trang Chủ</Button>
                     </Link>
                 ]}>
-
             </Result>
+            
         </div>
     )
 }
